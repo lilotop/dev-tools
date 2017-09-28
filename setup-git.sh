@@ -45,6 +45,12 @@ setupAlias stmfull "submodule foreach --recursive 'git status -v -v'" 'full stat
 setupAlias "alias" "config --get-regexp ^alias-desc\." 'list all available aliases with their descriptions'
 setupAlias alias-cmds "config --get-regexp ^alias[^-]" 'list the commands of all available aliases'
 
+# attempts on a fancier git alias listing
+# git config --get-regexp ^alias-desc\. | sed -n -e 's/^alias-desc\.\(\w*\) \(.*\)/\1 -> \2/p'
+# echo -e $(git config --get-regexp ^alias-desc\. | sed -n -e 's/^alias-desc\.\(\w*\) \(.*\)/\\e[96m\1\\e[39m -> \\e[32m\2\\e[39m/p')
+
+
+
 echo "setting up some additional config values..."
 git config status.submodulesummary 1
 git config push.recurseSubmodules check
